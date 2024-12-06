@@ -28,13 +28,7 @@ public class Main {
 
     private <T> Map<T,Integer> getCountOfElements(T [] arr){
         Map<T, Integer> elementsCounts = new HashMap<>();
-        Arrays.stream(arr).forEach(element ->
-                {
-                    if (elementsCounts.containsKey(element))
-                        elementsCounts.replace(element, elementsCounts.get(element) + 1);
-                    else elementsCounts.put(element, 1);
-                }
-        );
+        Arrays.stream(arr).forEach(element -> elementsCounts.put(element, elementsCounts.getOrDefault(element, 0) + 1));
         return elementsCounts;
     }
 }
